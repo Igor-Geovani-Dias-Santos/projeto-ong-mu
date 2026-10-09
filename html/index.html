@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Início | ONG Mãos Unidas</title>
-  <meta name="description" content="ONG Mãos Unidas: projetos, doações e voluntariado.">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -65,7 +64,10 @@
     <article class="col-md-6 col-lg-4">
       <span class="badge"></span>
       <h3></h3>
-      <img src="../imagens/equipe.jpg" alt="" width="400">
+      <picture>
+        <source type="image/webp" sizes="(min-width: 1280px) 350px, (min-width: 1024px) 290px, (min-width: 768px) 330px, 100vw">
+        <img src="../imagens/equipe.jpg" alt="" width="800" height="500" loading="lazy" decoding="async">
+      </picture>
       <p></p>
     </article>
   </template>
@@ -75,7 +77,10 @@
     <h1>ONG Mãos Unidas</h1>
     <section class="col-md-6 col-xl-4">
       <h2>Quem somos</h2>
-      <img src="../imagens/equipe.jpg" alt="Voluntários da ONG Mãos Unidas reunidos em equipe" width="600">
+      <picture>
+        <source type="image/webp" srcset="../imagens/equipe-400.webp 400w, ../imagens/equipe-800.webp 800w" sizes="(min-width: 1280px) 350px, (min-width: 768px) 330px, 100vw">
+        <img src="../imagens/equipe.jpg" alt="Voluntários da ONG Mãos Unidas reunidos em equipe" width="800" height="500" decoding="async">
+      </picture>
       <p>Somos uma organização que atua no apoio a famílias em situação de vulnerabilidade, com ações de alimentação, educação e cidadania.</p>
     </section>
 
@@ -252,7 +257,7 @@
   </template>
 
   <script src="../js/aviso-servidor.js" defer></script>
-  <script src="../js/chart.umd.js" defer></script>
+  <script type="module" src="../js/chart.umd.js"></script>
   <script type="module" src="../js/main.js"></script>
 </body>
 </html>
