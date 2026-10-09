@@ -1,0 +1,431 @@
+/* ===== Design System: ONG Mãos Unidas ===== */
+:root {
+  /* Cores primárias */
+  --cor-primaria: #1F4E79;
+  --cor-primaria-escura: #163A5A;
+
+  /* Cores secundárias */
+  --cor-secundaria: #2E7D32;
+  --cor-destaque: #F9A825;
+
+  /* Tons neutros */
+  --cor-branco: #FFFFFF;
+  --cor-neutra-100: #F5F7FA;
+  --cor-neutra-300: #CBD2D9;
+  --cor-neutra-700: #52606D;
+  --cor-neutra-900: #1F2933;
+
+  /* Cor de erro (validação de formulário) */
+  --cor-erro: #B42318;
+
+  /* Fundos claros dos avisos (feedback) */
+  --fundo-sucesso: #E8F5E9;
+  --fundo-aviso: #FFF8E1;
+  --fundo-erro: #FDECEA;
+  --fundo-info: #E8F0F7;
+
+  /* Escala tipográfica */
+  --fonte-base: Arial, Helvetica, sans-serif;
+  --texto-sm: 0.875rem;
+  --texto-base: 1rem;
+  --texto-md: 1.25rem;
+  --texto-lg: 1.75rem;
+  --texto-xl: 2.5rem;
+
+  /* Espaçamentos (escala modular de 8px) */
+  --espaco-1: 0.25rem;
+  --espaco-2: 0.5rem;
+  --espaco-3: 1rem;
+  --espaco-4: 1.5rem;
+  --espaco-5: 2rem;
+  --espaco-6: 3rem;
+}
+
+body {
+  font-family: var(--fonte-base);
+  font-size: var(--texto-base);
+  line-height: 1.6;
+  color: var(--cor-neutra-900);
+  background: var(--cor-branco);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: var(--espaco-3);
+}
+
+h1 { font-size: var(--texto-lg); color: var(--cor-primaria); margin-bottom: var(--espaco-3); }
+h2 { font-size: var(--texto-lg); color: var(--cor-primaria); margin-top: var(--espaco-5); }
+h3 { font-size: var(--texto-md); color: var(--cor-primaria-escura); }
+small, caption { font-size: var(--texto-sm); color: var(--cor-neutra-700); }
+
+a { color: var(--cor-primaria); }
+a:hover { color: var(--cor-primaria-escura); }
+a:focus-visible, input:focus-visible, button:focus-visible {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+/* Flexbox: cabeçalho (título, texto e menu em coluna) */
+header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+  background: var(--cor-neutra-100);
+  padding: var(--espaco-4);
+  border-radius: var(--espaco-2);
+}
+header > * { margin: 0; }
+/* ===== Menu responsivo: hambúrguer no celular e dropdown nas telas maiores ===== */
+nav { position: relative; }
+nav a { padding: var(--espaco-1) 0; font-weight: bold; }
+
+/* Caixa invisível (mas acessível pelo teclado) que abre e fecha o menu */
+.menu-toggle {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Botão hambúrguer */
+.menu-icone {
+  display: inline-block;
+  margin: 0;
+  padding: var(--espaco-2) var(--espaco-3);
+  border: 1px solid var(--cor-primaria);
+  border-radius: var(--espaco-2);
+  color: var(--cor-primaria);
+  font-weight: bold;
+  cursor: pointer;
+}
+.menu-toggle:focus-visible + .menu-icone {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+/* Flexbox: lista do menu (escondida no celular até clicar no hambúrguer) */
+.menu, .submenu { list-style: none; margin: 0; padding: 0; }
+.menu {
+  display: none;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: var(--espaco-1);
+  margin-top: var(--espaco-2);
+}
+.menu-toggle:checked ~ .menu { display: flex; }
+.submenu { padding-left: var(--espaco-3); }
+
+img { max-width: 100%; height: auto; border-radius: var(--espaco-2); }
+
+/* Flexbox: cartões das campanhas (conteúdo em coluna) */
+article {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--espaco-2);
+  border: 1px solid var(--cor-neutra-300);
+  padding: var(--espaco-3);
+  border-radius: var(--espaco-2);
+}
+article > * { margin: 0; }
+article { transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease; }
+article:hover, article:focus-within {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 4px 12px rgba(31, 41, 51, 0.15);
+  transform: translateY(-2px);
+}
+
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid var(--cor-neutra-300); padding: var(--espaco-2); text-align: left; }
+th { background: var(--cor-primaria); color: var(--cor-branco); }
+
+fieldset { border: 1px solid var(--cor-neutra-300); margin: 0; padding: var(--espaco-3); min-width: 0; }
+legend { font-weight: bold; color: var(--cor-primaria); padding: 0 var(--espaco-2); }
+label { display: block; margin-top: var(--espaco-3); }
+input { width: 100%; padding: var(--espaco-2); border: 1px solid var(--cor-neutra-700); box-sizing: border-box; }
+
+/* ===== Estados interativos: botões ===== */
+button {
+  background: var(--cor-secundaria);
+  color: var(--cor-branco);
+  border: 0;
+  padding: var(--espaco-3) var(--espaco-4);
+  font-size: var(--texto-base);
+  border-radius: var(--espaco-2);
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+}
+button:hover {
+  background: #256528;
+  box-shadow: 0 3px 8px rgba(31, 41, 51, 0.3);
+}
+button:focus-visible {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+button:active {
+  background: #1B5E20;
+  box-shadow: none;
+  transform: translateY(1px);
+}
+button:disabled {
+  background: var(--cor-neutra-300);
+  color: var(--cor-neutra-700);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ===== Estados interativos: campos do formulário ===== */
+input { transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+input:hover { border-color: var(--cor-primaria); }
+input:focus {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(31, 78, 121, 0.25);
+}
+/* Validação visual: só aparece depois que a pessoa interage com o campo */
+input:user-valid {
+  border-color: var(--cor-secundaria);
+  border-left-width: 6px;
+}
+input:user-invalid {
+  border-color: var(--cor-erro);
+  border-left-width: 6px;
+  box-shadow: 0 0 0 2px rgba(180, 35, 24, 0.2);
+}
+
+/* Flexbox: rodapé (contato e direitos lado a lado, quebrando linha se faltar espaço) */
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--espaco-3);
+  margin-top: var(--espaco-6);
+  border-top: 1px solid var(--cor-neutra-300);
+  padding-top: var(--espaco-3);
+  color: var(--cor-neutra-700);
+}
+
+
+/* ===== CSS Grid de 12 colunas (mobile first) ===== */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--espaco-4);
+}
+.grade > * { grid-column: span 12; min-width: 0; }
+.grade > button { justify-self: start; }
+
+/* ===== Breakpoints (5 pontos de quebra) ===== */
+
+/* 1) Celular grande: 480px */
+@media (min-width: 480px) {
+  h1 { font-size: var(--texto-xl); }
+  /* menu horizontal, sem hambúrguer */
+  .menu-icone { display: none; }
+  .menu { display: flex; flex-direction: row; gap: var(--espaco-3); margin-top: 0; }
+
+  /* dropdown: submenu escondido, aparece com mouse ou foco do teclado */
+  .tem-submenu { position: relative; }
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 12rem;
+    padding: var(--espaco-2);
+    background: var(--cor-branco);
+    border: 1px solid var(--cor-neutra-300);
+    border-radius: var(--espaco-2);
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  }
+  .tem-submenu:hover > .submenu,
+  .tem-submenu:focus-within > .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+/* 2) Tablet: 768px - 2 colunas de 6 */
+@media (min-width: 768px) {
+  body { max-width: 720px; padding: var(--espaco-4); }
+  .col-md-6 { grid-column: span 6; }
+}
+
+/* 3) Notebook: 1024px - campanhas em 3 colunas de 4 */
+@media (min-width: 1024px) {
+  body { max-width: 960px; }
+  .col-lg-4 { grid-column: span 4; }
+}
+
+/* 4) Desktop: 1280px - seções em 3 colunas de 4 */
+@media (min-width: 1280px) {
+  body { max-width: 1140px; }
+  .col-xl-4 { grid-column: span 4; }
+}
+
+/* 5) Tela grande: 1600px - container maior e letra um pouco maior */
+@media (min-width: 1600px) {
+  html { font-size: 112.5%; }
+  body { max-width: 1400px; }
+}
+
+/* ===== Componentes de feedback ===== */
+
+/* Badge (etiqueta): categoriza uma informação */
+.badge {
+  display: inline-block;
+  padding: var(--espaco-1) var(--espaco-2);
+  border-radius: 999px;
+  font-size: var(--texto-sm);
+  font-weight: bold;
+  line-height: 1.4;
+}
+.badge--sucesso { background: var(--cor-secundaria); color: var(--cor-branco); }
+.badge--aviso   { background: var(--cor-destaque); color: var(--cor-neutra-900); }
+.badge--erro    { background: var(--cor-erro); color: var(--cor-branco); }
+.badge--info    { background: var(--cor-primaria); color: var(--cor-branco); }
+.badge--neutro  { background: var(--cor-neutra-100); color: var(--cor-neutra-900); border: 1px solid var(--cor-neutra-300); }
+
+/* Alerta: caixa de aviso dentro da página */
+.alerta {
+  display: flex;
+  gap: var(--espaco-2);
+  padding: var(--espaco-3);
+  margin: 0 0 var(--espaco-3);
+  border-left: 6px solid var(--cor-neutra-700);
+  border-radius: var(--espaco-2);
+  background: var(--cor-neutra-100);
+  color: var(--cor-neutra-900);
+}
+.alerta--sucesso { border-left-color: var(--cor-secundaria); background: var(--fundo-sucesso); }
+.alerta--aviso   { border-left-color: var(--cor-destaque);   background: var(--fundo-aviso); }
+.alerta--erro    { border-left-color: var(--cor-erro);       background: var(--fundo-erro); }
+.alerta--info    { border-left-color: var(--cor-primaria);   background: var(--fundo-info); }
+
+/* Botão em formato de link (usado para abrir toast e modal) */
+.botao {
+  display: inline-block;
+  padding: var(--espaco-3) var(--espaco-4);
+  margin-right: var(--espaco-2);
+  background: var(--cor-secundaria);
+  color: var(--cor-branco);
+  border-radius: var(--espaco-2);
+  text-decoration: none;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+.botao:hover { background: #256528; color: var(--cor-branco); box-shadow: 0 3px 8px rgba(31, 41, 51, 0.3); }
+.botao--secundario { background: var(--cor-primaria); }
+.botao--secundario:hover { background: var(--cor-primaria-escura); }
+
+/* Toast: notificação que não bloqueia a página (aparece com :target) */
+.toast {
+  display: none;
+  position: fixed;
+  right: var(--espaco-4);
+  bottom: var(--espaco-4);
+  max-width: 20rem;
+  gap: var(--espaco-2);
+  padding: var(--espaco-3);
+  background: var(--cor-neutra-900);
+  color: var(--cor-branco);
+  border-left: 6px solid var(--cor-secundaria);
+  border-radius: var(--espaco-2);
+  box-shadow: 0 6px 16px rgba(31, 41, 51, 0.35);
+  z-index: 200;
+}
+.toast:target, .toast.aberto { display: flex; animation: toast-entrada 0.3s ease; }
+.toast a { color: var(--cor-branco); margin-left: auto; }
+.toast .toast__fechar { margin-left: auto; }
+@keyframes toast-entrada {
+  from { opacity: 0; transform: translateY(1rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Modal: janela por cima da página (abre com :target) */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  padding: var(--espaco-3);
+  background: rgba(31, 41, 51, 0.6);
+  z-index: 100;
+}
+.modal:target, .modal.aberto { display: flex; animation: modal-entrada 0.2s ease; }
+.modal__caixa {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+  padding: var(--espaco-5) var(--espaco-4) var(--espaco-4);
+  background: var(--cor-branco);
+  border-top: 6px solid var(--cor-secundaria);
+  border-radius: var(--espaco-2);
+  box-shadow: 0 10px 30px rgba(31, 41, 51, 0.4);
+}
+.modal__caixa h2 { margin-top: 0; }
+.modal__fechar {
+  position: absolute;
+  top: var(--espaco-2);
+  right: var(--espaco-3);
+  font-size: var(--texto-lg);
+  text-decoration: none;
+}
+@keyframes modal-entrada {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Respeita quem prefere menos animações */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* Botões de fechar do toast e do modal (são <button>, sem o visual do botão verde) */
+button.toast__fechar, button.modal__fechar {
+  background: none;
+  color: inherit;
+  padding: 0;
+  box-shadow: none;
+  font-size: var(--texto-lg);
+  line-height: 1;
+}
+button.toast__fechar:hover, button.modal__fechar:hover { background: none; box-shadow: none; opacity: 0.7; }
+button.modal__fechar { color: var(--cor-primaria); }
+
+/* Identidade no topo e página atual no menu (SPA) */
+.marca { font-size: var(--texto-lg); font-weight: bold; color: var(--cor-primaria); }
+nav a[aria-current="page"] { color: var(--cor-primaria-escura); border-bottom: 3px solid var(--cor-secundaria); }
+#app:focus { outline: none; }
+
+/* ===== Validação feita pelo JavaScript (classes aplicadas pelo main.js) ===== */
+input.campo--erro {
+  border-color: var(--cor-erro);
+  border-left-width: 6px;
+  box-shadow: 0 0 0 2px rgba(180, 35, 24, 0.2);
+}
+input.campo--ok {
+  border-color: var(--cor-secundaria);
+  border-left-width: 6px;
+  box-shadow: none;
+}
+.mensagem-erro {
+  margin: var(--espaco-1) 0 0;
+  color: var(--cor-erro);
+  font-size: var(--texto-sm);
+  font-weight: bold;
+}
+
+/* Lista de cadastros salvos (localStorage) */
+#lista-cadastros { padding-left: var(--espaco-4); }
+#lista-cadastros li { padding: var(--espaco-1) 0; border-bottom: 1px solid var(--cor-neutra-300); }
+
+/* Gráfico das metas (Chart.js) */
+.grafico { position: relative; max-width: 700px; margin-bottom: var(--espaco-4); }
