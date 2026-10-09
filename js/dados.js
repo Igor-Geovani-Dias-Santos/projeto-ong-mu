@@ -4,7 +4,7 @@
 export const campanhas = [
   {
     titulo: 'Cesta Solidária',
-    imagem: '../imagens/cesta-solidaria.jpg',
+    imagem: new URL('../imagens/cesta-solidaria.jpg', import.meta.url).href,
     alt: 'Voluntários montando cestas básicas em uma mesa',
     descricao: 'Arrecadação de alimentos não perecíveis para famílias em situação de vulnerabilidade.',
     status: 'Em andamento', tipo: 'sucesso',
@@ -12,7 +12,7 @@ export const campanhas = [
   },
   {
     titulo: 'Volta às Aulas',
-    imagem: '../imagens/volta-as-aulas.jpg',
+    imagem: new URL('../imagens/volta-as-aulas.jpg', import.meta.url).href,
     alt: 'Crianças recebendo mochilas e material escolar',
     descricao: 'Doação de mochilas e materiais escolares para crianças da comunidade.',
     status: 'Últimos dias', tipo: 'aviso',
@@ -20,7 +20,7 @@ export const campanhas = [
   },
   {
     titulo: 'Inverno Solidário',
-    imagem: '../imagens/inverno-solidario.jpg',
+    imagem: new URL('../imagens/inverno-solidario.jpg', import.meta.url).href,
     alt: 'Pilha de cobertores e agasalhos organizados em caixas',
     descricao: 'Coleta de cobertores e agasalhos para o período de frio.',
     status: 'Em breve', tipo: 'info',
