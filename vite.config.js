@@ -27,6 +27,7 @@ export default defineConfig({
     outDir: '../dist',
     emptyOutDir: true,
     minify: 'esbuild',
+    assetsInlineLimit: 0, // não embute imagens pequenas dentro do JS
   },
   plugins: [removeAvisoServidor, minificaHtml],
 });

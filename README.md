@@ -35,7 +35,7 @@ projeto-ong-mu/
 │   └── index.html        Página única (a SPA)
 ├── css/
 │   └── style.css         Estilos e Design System
-├── imagens/              Imagens das campanhas e da equipe
+├── imagens/              Imagens (JPG, WebP 400px e WebP 800px)
 └── js/
     ├── main.js           Liga os módulos
     ├── rotas.js          Rotas e troca de páginas
@@ -93,6 +93,14 @@ Resultado da minificação (tamanho em bytes):
 | JS (nossos 9 módulos) | 16.479 | 7.643 | 54% |
 
 A biblioteca Chart.js (208 KB) já vem minificada, então quase não muda. Não há testes automatizados. A validação do HTML é feita manualmente no [W3C Validator](https://validator.w3.org/).
+
+## Imagens otimizadas
+
+- Cada imagem tem 3 arquivos: WebP de 400px, WebP de 800px e o JPG original como reserva.
+- A tag `<picture>` com `srcset` e `sizes` deixa o navegador escolher o tamanho certo para a tela.
+- As imagens das campanhas usam `loading="lazy"` e só carregam quando aparecem na tela.
+- `width` e `height` evitam que a página "pule" enquanto a imagem carrega.
+- Redução: de 137.160 bytes (4 JPGs) para 32.214 bytes (WebP 800px, -77%) ou 15.508 bytes (WebP 400px, -89%).
 
 ## Versionamento
 

@@ -131,6 +131,8 @@ nav a { padding: var(--espaco-1) 0; font-weight: bold; }
 .submenu { padding-left: var(--espaco-3); }
 
 img { max-width: 100%; height: auto; border-radius: var(--espaco-2); }
+picture { display: block; max-width: 100%; }
+picture img { display: block; }
 
 /* Flexbox: cartões das campanhas (conteúdo em coluna) */
 article {

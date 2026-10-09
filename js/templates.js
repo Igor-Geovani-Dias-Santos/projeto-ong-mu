@@ -13,8 +13,10 @@ function criarCartao(campanha) {
   cartao.querySelector('p').textContent = campanha.descricao;
 
   const imagem = cartao.querySelector('img');
-  imagem.src = campanha.imagem;
+  imagem.src = campanha.imagem.jpg;
   imagem.alt = campanha.alt;
+  cartao.querySelector('source').srcset =
+    campanha.imagem.webp400 + ' 400w, ' + campanha.imagem.webp800 + ' 800w';
 
   return cartao;
 }
